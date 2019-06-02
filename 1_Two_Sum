@@ -1,1 +1,47 @@
+class Solution {
+    public int[] twoSum(int[] nums, int target) {
+        int[] result = new int[2];
+        for(int i=0; i<nums.length; i++){
+            for(int j=i+1; j<nums.length; j++){
+                if((nums[i]+nums[j]) == target){
+                    result[0]=i;
+                    result[1]=j;
+                    }
+            }
+        }
+        return result;
+    }   
+}
 
+//Runtime: 34 ms, faster than 17.32% of Java online submissions for Two Sum.
+Memory Usage: 38 MB, less than 98.33% of Java online submissions for Two Sum.
+
+
+
+
+class Solution {
+    public int[] twoSum(int[] nums, int target) {
+        
+        int[] result = new int[2];
+        HashMap<Integer,Integer> map = new HashMap<>();
+        
+        for(int i=0; i<nums.length; i++){
+            int temp = target - nums[i];
+            
+            if(map.containsKey(temp)){
+                result[0] = map.get(temp);
+                result[1] = i;
+                
+                break;
+            }
+            else{
+                map.put(nums[i],i);
+            }
+        }
+        return result;
+    }   
+}
+
+
+//Runtime: 2 ms, faster than 99.25% of Java online submissions for Two Sum.
+Memory Usage: 36.4 MB, less than 99.64% of Java online submissions for Two Sum.
