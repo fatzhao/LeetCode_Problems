@@ -1,0 +1,34 @@
+method 1
+class Solution {
+    public String removeOuterParentheses(String S) {
+        String result = new String();
+        int left = 0;
+        for (int i=0; i<S.length(); i++){
+            if(S.charAt(i) == '('){
+                if (left++ != 0)
+                    result += S.charAt(i);
+            }
+            else if (S.charAt(i) == ')'){
+                if(--left != 0)
+                    result += S.charAt(i);
+            }
+        }
+        return result;
+    }
+}
+
+
+method 2
+class Solution {
+    public String removeOuterParentheses(String S) {
+        StringBuilder result = new StringBuilder();
+        int left = 0;
+        for (char e : S.toCharArray()){
+            if(e == '(' && left++ >0 )
+                result.append(e);
+            if(e == ')' && left-- >1)
+                result.append(e);
+        }
+        return result.toString();
+    }
+}
