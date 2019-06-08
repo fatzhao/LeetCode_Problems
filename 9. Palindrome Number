@@ -1,0 +1,44 @@
+method 1:
+class Solution {
+    public boolean isPalindrome(int x) {
+        
+        if (x<0) return false;
+        if (x == 0) return true;
+        
+        StringBuilder s = new StringBuilder();
+        
+        while (x>0){
+            int t = x%10;
+            x = x/10;
+            s.append(t);
+        }
+        
+        int left = 0;
+        int right = s.length()-1;
+        
+        while(s.charAt(left)==s.charAt(right) && left < right){
+            left++; right--;
+        }
+        if(left==right || left == right+1){
+            return true;
+        }
+        else return false;
+    }
+}
+
+
+method 2:
+class Solution {
+    public boolean isPalindrome(int x) {
+        
+        if (x<0 || (x%10 == 0 && x != 0)) return false;
+        
+        int y = 0;
+        while (x>y){
+            y = y*10 + x%10;
+            x = x/10;
+        }
+        
+        return x == y || x == y/10;
+    }
+}
