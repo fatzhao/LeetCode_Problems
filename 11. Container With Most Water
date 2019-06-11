@@ -1,0 +1,31 @@
+//method 1 brute force
+class Solution {
+    public int maxArea(int[] height) {
+        
+        int ans = 0;
+        
+        for(int i = 0; i<height.length; i++){
+            for(int j=0; j<height.length; j++){
+                ans = Math.max(ans, ((Math.min(height[i],height[j]))*(j-i)));
+            }
+        }
+        return ans;
+    }
+}
+
+
+//method 2 greedy
+
+class Solution {
+    public int maxArea(int[] height) {
+        
+        int left=0, right=height.length-1, max=0;
+        
+        while(left<right){
+            max = Math.max(max,(Math.min(height[right],height[left]))*(right-left));
+            if (height[left] < height[right]) left++;
+            else right--;
+        }
+        return max;
+    }
+}
