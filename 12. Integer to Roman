@@ -1,0 +1,24 @@
+//把900，400，90，40，9，4 也看做一种进位方式
+
+class Solution {
+    public String intToRoman(int num) {
+        
+        int[] v = {1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1};
+        String[] s = {"M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"};
+        
+        String ans = "";
+        int i = 0;
+        
+        while(num>0){
+            int k = num / v[i];
+            for (int j=0; j<k; j++){
+                ans += s[i];
+            }
+            num = num % v[i];
+            i++;
+        }
+        
+        return ans;
+        
+    }
+}
